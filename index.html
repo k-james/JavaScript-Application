@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="katelin james" content="">
+   
+
+    <title>Assignment 6</title>
+
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!-- Custom styles -->
+    <link href="styles.css" rel="stylesheet">
+
+   
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Project Pie</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Project Pie</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deliveryModal"><a class="btn btn-lg btn-success" href="#" role="button">DELIVERY
+          </a></button>
+          <button type="button" class="btn btn-primary"><a class="btn btn-lg btn-success" href="#" role="button" disabled>CARRY OUT
+          </a></button>
+          
+          <div class="modal fade" id="deliveryModal" tabindex="-1" role="dialog" aria-labelledby="deliveryModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deliveryModalLabel">Delivery Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!--MODAL BODY- DELIVERY INFO-->
+                  <div class="modal-body">
+<!--DELIVERY FORM-->
+                     <form id="target" action="javascript:alert('success!');" method="post"> 
+                      
+                            <input placeholder="First Name" type="text" class="delivery form-control" id="firstName" name="firstName">
+                            <input placeholder="Last Name" type="text" class="delivery form-control" id="lastName" name="lastName">
+                            <input placeholder="Email Address" type="text" class="delivery form-control" id="email" name="email">
+                             <input placeholder="Phone Number" type="text" class="delivery form-control" id="phone" name="phone">
+                            <input placeholder="Street Address" type="text" class="delivery form-control" id="streetAddress" name="streetAddress">
+                            <input placeholder="Postal Code" type="text" class="delivery form-control" id="postalCode" name="postalCode">
+                           <input placeholder="City" type="text" class="delivery form-control" id="city" name="city">
+                            <!--ADDRESS TYPE-->                          
+                            <label for="addressType">Address Type</label>
+                            <select class="form-control" id="addressType" name="addressType">
+                              <option value="">House</option>
+                              <option value="">Apartment</option>
+                              <option value="">Business</option>
+                              <option value="">Campus</option>
+                              <option value="">Hotel</option>
+                              <option value="">Dorm</option>
+                              <option value="1">Other</option>
+                            </select>                          
+                        <!--HIDDEN DIV-->
+                                <div id="hiddenDiv" class="hide form-group">
+                                    <input value="" class="form-control" type="text" placeholder="Other Address Type" id="otherAddress" name="otherAddress">
+                                </div>
+                  </div><!--END MODAL BODY- DELIVERY INFO-->
+                  <div class="modal-footer">
+     <!--SUBMIT - DELIVERY INFO-->
+                    <button type="reset" data-dismiss="modal" value="reset" class="btn btn-secondary" id="reset">Close</button>
+                    <button type="submit" value="submit" name="submit" class="btn btn-primary" id="trigger">Save changes</button>
+                      </form><!--END FORM-->
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+<section>
+    <h2>Build Your Pizza</h2>
+          <div class="input-group col-md-2">
+              <span class="input-group-addon">$</span>
+                 <!--COST TRACKER-->
+                  <input type="text" class="form-control" aria-label="Amount">
+            </div>
+       <!--CAROUSEL CONTENT-->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <!--STEP ONE-->
+               <section class="item active">
+<!--DOUGH FORM-->
+                   <form>
+                    <fieldset class="form-group">
+                        <legend>Dough Options</legend>
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" >
+                                Hand Tossed
+                              </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                    Thin Crust
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                                    New York Style
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option4">
+                                    Gluten Free
+                                </label>
+                            </div>
+                      </fieldset>
+                </form>
+            </section>
+    <!--STEP TWO-->
+            <section class="item">
+                    <form>
+                      <fieldset class="form-group">
+                       <legend>Size of Pizza</legend>
+                        <label class="mr-sm-2" for="sizeOption">Size</label>
+                          <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sizeOption">
+                            <option selected>Choose...</option>
+                            <option value="1">Small</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Large</option>
+                          </select>
+                        
+                      </fieldset>
+                    </form>
+            </section>
+    <!--STEP THREE-->
+            <section class="item">
+                <form>
+                  <fieldset class="form-group">
+                   <legend>Cheese Options</legend>
+                    <label for="cheeseOption">Cheese Option</label>
+                    <select class="form-control" id="cheeseOption">
+                        <option selected>Choose...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                  </fieldset>
+                </form>
+            </section>
+    <!--STEP FOUR-->
+            <section class="item">
+                <form>
+                  <fieldset class="form-group">
+                   <legend>Sauce Options</legend>
+                    <label for="sauceOption">Sauce Option</label>
+                    <select class="form-control" id="sauceOption">
+                        <option selected>Choose...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                  </fieldset>
+                </form>
+            </section>
+    <!--STEP FIVE-->
+            <section class="item">
+                <form>
+                  <fieldset class="form-check">
+                   <legend>Topping Options</legend>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Pepperoni
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Sausage
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Ham
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Bacon
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Salami
+                        </label><br>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Peppers
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Olives
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Jalapenos
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Mushrooms
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Pineapple
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="">
+                        Onion
+                        </label>
+                </fieldset>
+                </form>
+            </section>
+  </div><!--END CAROUSEL CONTENT-->
+  
+  <button class="btn btn-default" type="button" onclick="$('#myCarousel').carousel('prev')">Previous<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+      </a></button>
+  <button class="btn btn-success" type="button" onclick="$('#myCarousel').carousel('next')">Next <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+      </a></button>
+       
+    </div>
+</section>
+   
+         
+
+   
+        <!-- CHECK OUT Button trigger modal -->
+        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#checkOutModal" data-whatever="">Check Out</button>
+        <!--MODAL-->
+         <div class="modal fade" id="checkOutModal" tabindex="-1" role="dialog" aria-labelledby="checkOutModallLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="checkOuteModalLabel">Check Out</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+            <!--MODAL BODY-->
+              <div class="modal-body">
+      <!--ACCORDION-->
+        <div id="accordion" role="tablist" aria-multiselectable="true"> 
+              <div class="card"><!--EXPAND ONE-->
+                <div class="card-header" role="tab" id="headingOne">
+                  <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#billingInfoForm" aria-expanded="true" aria-controls="billingInfoForm">
+                      Billing Information
+                    </a>
+                  </h5>
+                </div>
+                        <form id="billingInfoForm" class="collapse" role="tabpanel" aria-labelledby="headingOne"> <!--FORM BILLING INFO-->
+                          <fieldset class="form-group">
+                             <label class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">Delivery Address Same as Billing</span>
+                            </label>
+                         </fieldset>
+                            <fieldset class="form-group">
+                                <input placeholder="First Name"type="text" class="form-control" id="firstName">
+                                <input placeholder="Last Name" type="text" class="form-control" id="lastName">
+                                <input placeholder="Street Address"type="text" class="form-control" id="streetAddress">
+                                <input placeholder="Postal Code" type="number" class="form-control" id="postalCode">
+                                <input placeholder="City" type="text" class="form-control" id="city">
+                            </fieldset>
+                        </form>
+                </div>
+    
+          <div class="card"><!--EXPAND TWO-->
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#cardInfoForm" aria-expanded="false" aria-controls="cardInfoForm">
+                  Card Info
+                </a>
+              </h5>
+            </div>
+                    <form id="cardInfoForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo"><!--FORM CARD INFO-->
+                     <fieldset class="form-group">
+                        <input placeholder="Credit Card Number" type="" class="form-control" id="">
+                        <input placeholder="Expires MM/YYYY" type="" class="form-control" id="">
+                        <input placeholder="CVV" type="" class="form-control" id="">
+                      </fieldset>    
+                    </form>
+          </div>
+              <section>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
+                <button type="button" class="btn btn-primary">Submit</button>
+            </section>
+            
+            
+        </div><!--END ACCORDION-->
+    </div><!--END MODAL BODY-->
+            </div>
+          </div>
+    </div><!--END MODAL-->
+
+      <footer class="footer">
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--CUSTOM JS-->
+	 <script src="script.js" type="text/javascript"></script>
+	 
+<script>
+  //Modal Trigger     
+  $('#checkOutModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  //var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  
+//  var modal = $(this)
+//  modal.find('.modal-title').text('New message to ' + recipient)
+//  modal.find('.modal-body input').val(recipient)
+})
+  
+//CAROUSEL- Interval Disable 
+    $('.carousel').carousel({
+        interval: false
+    })
+</script>
+<script>
+//Hidden Div
+    $("#addressType").change(function () {
+        var value = this.value;
+            if (value == "1"){
+                $(".hide").removeClass();
+            }
+        });
+       
+</script>
+<script>
+    
+//PREVENT DEFAULT
+//    $("#target").submit(function(event) {
+//        window.console.log("handler for submit called");
+//            event.preventDefault();
+//    });
+     
+     
+//REQUIRE VALIDATION
+//     $( "#target" ).submit(function( event ) {
+//        if ( $( "input" ).val() === "true" ) {
+//            $( "h5" ).text( "Validated..." ).show();
+//            return;
+//        }
+//            $( "h5" ).text( "Not valid!" ).show().fadeOut( 1000 );
+//            event.preventDefault();
+//     });
+//
+//    document.getElementById("target").onsubmit = function formValidation() {
+//        window.console.log("validation function invoked");
+//    }
+     
+     
+     
+     
+</script>
+   
+  </body>
+</html>
