@@ -7,10 +7,10 @@
     margin: 1em;
 }
 
-input:invalid {
+input:false {
     box-shadow: 0 0 5px 1px red;
 }
 
-input:focus:invalid{
+input:focus:false{
     outline: none;
 }

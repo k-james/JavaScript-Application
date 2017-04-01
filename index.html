@@ -56,13 +56,13 @@
                   </div>
                   <!--MODAL BODY- DELIVERY INFO-->
                   <div class="modal-body">
-<!--DELIVERY FORM-->
-                     <form id="target" action="javascript:alert('success!');" method="post"> 
+<!--target - DELIVERY FORM-->
+                     <form id="target" name="target" action="javascript:window.console.log('success! deliveryForm');" method="post"> 
                       
                             <input placeholder="First Name" type="text" class="delivery form-control" id="firstName" name="firstName">
                             <input placeholder="Last Name" type="text" class="delivery form-control" id="lastName" name="lastName">
                             <input placeholder="Email Address" type="text" class="delivery form-control" id="email" name="email">
-                             <input placeholder="Phone Number" type="text" class="delivery form-control" id="phone" name="phone">
+                            <input placeholder="Phone Number" type="text" class="delivery form-control" id="phone" name="phone">
                             <input placeholder="Street Address" type="text" class="delivery form-control" id="streetAddress" name="streetAddress">
                             <input placeholder="Postal Code" type="text" class="delivery form-control" id="postalCode" name="postalCode">
                            <input placeholder="City" type="text" class="delivery form-control" id="city" name="city">
@@ -79,7 +79,7 @@
                             </select>                          
                         <!--HIDDEN DIV-->
                                 <div id="hiddenDiv" class="hide form-group">
-                                    <input value="" class="form-control" type="text" placeholder="Other Address Type" id="otherAddress" name="otherAddress">
+                                    <input placeholder="Other Address Type" class="form-control" type="text" id="otherAddress" name="otherAddress">
                                 </div>
                   </div><!--END MODAL BODY- DELIVERY INFO-->
                   <div class="modal-footer">
@@ -98,64 +98,80 @@
     <h2>Build Your Pizza</h2>
           <div class="input-group col-md-2">
               <span class="input-group-addon">$</span>
-                 <!--COST TRACKER-->
-                  <input type="text" class="form-control" aria-label="Amount">
+<!--COST TRACKER - displayAmount-->
+                  <input placeholder="Total Amount" type="text" class="form-control" aria-label="displayAmount" id="displayAmount" name="displayAmount" readonly>
             </div>
-       <!--CAROUSEL CONTENT-->
+           <!--CAROUSEL CONTENT-->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner" role="listbox">
             <!--STEP ONE-->
                <section class="item active">
-<!--DOUGH FORM-->
-                   <form>
+<!--doughForm-->
+                   <form id="doughOption" name="doughOption" action="javascript:window.console.log('success! doughOption');" method="post">
                     <fieldset class="form-group">
                         <legend>Dough Options</legend>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" >
+                                <input type="radio" class="form-check-input" name="handToss" id="handToss" value="handToss" >
                                 Hand Tossed
                               </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                                    <input type="radio" class="form-check-input" name="thinCrust" id="thinCrust" value="thinCrust">
                                     Thin Crust
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+                                    <input type="radio" class="form-check-input" name="nyStyle" id="nyStyle" value="nyStyle">
                                     New York Style
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option4">
+                                    <input type="radio" class="form-check-input" name="glutenFree" id="glutenFree" value="glutenFree">
                                     Gluten Free
                                 </label>
                             </div>
-                      </fieldset>
+                          </fieldset>
+               <div class="modal-footer">
+                    <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Size Options <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a></button>
+                </div>
                 </form>
             </section>
     <!--STEP TWO-->
             <section class="item">
-                    <form>
+                    <form id="sizeOption" name="sizeOption" action="javascript:window.console.log('success! sizeOption');" method="post">
                       <fieldset class="form-group">
-                       <legend>Size of Pizza</legend>
-                        <label class="mr-sm-2" for="sizeOption">Size</label>
-                          <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="sizeOption">
-                            <option selected>Choose...</option>
-                            <option value="1">Small</option>
-                            <option value="2">Medium</option>
-                            <option value="3">Large</option>
-                          </select>
-                        
+                   <legend>Size Options</legend>
+                    <label for="sizeOption">Size Option</label>
+                    <select class="form-control" id="cheeseOption">
+                        <option selected>Choose...</option>
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                        <option>Ex-Large</option>
+                    </select>
                       </fieldset>
+                <div class="modal-footer">
+                <button class="btn btn-default" type="button" onclick="$('#myCarousel').carousel('prev')">Back to Dough Option<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Back to Dough Option</span>
+                          </a></button>
+                   <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Cheese Option <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a></button>
+                </div>
                     </form>
             </section>
     <!--STEP THREE-->
             <section class="item">
-                <form>
+                <form id="cheeseOptions" name="cheeseOptions" action="javascript:window.console.log('success! cheeseOptions');" method="post">
                   <fieldset class="form-group">
                    <legend>Cheese Options</legend>
                     <label for="cheeseOption">Cheese Option</label>
@@ -168,11 +184,21 @@
                         <option>5</option>
                     </select>
                   </fieldset>
+                <div class="modal-footer">
+                  <button class="btn btn-default" type="button" onclick="$('#myCarousel').carousel('prev')">Back to Size Option<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                          </a></button>
+                <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Sauce Option <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a></button>
+                    </div>
                 </form>
             </section>
     <!--STEP FOUR-->
             <section class="item">
-                <form>
+                <form id="sauceOptions" name="sauceOptions" action="javascript:window.console.log('success! sauceOptions');" method="post">
                   <fieldset class="form-group">
                    <legend>Sauce Options</legend>
                     <label for="sauceOption">Sauce Option</label>
@@ -185,11 +211,21 @@
                         <option>5</option>
                     </select>
                   </fieldset>
+                  <div class="modal-footer">
+                  <button class="btn btn-default" type="button" onclick="$('#myCarousel').carousel('prev')">Back to Cheese Option<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                          </a></button>
+                <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Topping Options <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a></button>
+                    </div>
                 </form>
             </section>
     <!--STEP FIVE-->
             <section class="item">
-                <form>
+                <form id="toppingOptions" name="toppingOptions" action="javascript:window.console.log('success! toppingOptions');" method="post">
                   <fieldset class="form-check">
                    <legend>Topping Options</legend>
                         <label class="form-check-label">
@@ -237,18 +273,23 @@
                         Onion
                         </label>
                 </fieldset>
+                <div class="modal-footer">
+                <button class="btn btn-default" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('prev')">Back to Sauce Options<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                          </a></button>
+                <button class="btn btn-success" type="button" onclick="$('#myCarousel').carousel('next')">Return to Beginning <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a></button>
+                <button class="btn btn-default" type="submit" value="submit" name="submit">Save Order<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                          </a></button>
+                    </div>
                 </form>
             </section>
   </div><!--END CAROUSEL CONTENT-->
-  
-  <button class="btn btn-default" type="button" onclick="$('#myCarousel').carousel('prev')">Previous<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-      </a></button>
-  <button class="btn btn-success" type="button" onclick="$('#myCarousel').carousel('next')">Next <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-      </a></button>
        
     </div>
 </section>
