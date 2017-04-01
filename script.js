@@ -51,45 +51,6 @@ function inputEmail(inputtext) {
     }
 }//inputEmail
 
-//VALIDATION FUNCTION    
-document.getElementById("target").onsubmit = function formValidation() {
-    'use strict';
-    window.console.log("validation function invoked");
-    var firstName = document.getElementById('firstName'),
-        lastName = document.getElementById('lastName'),
-        email = document.getElementById('email'),
-        phone = document.getElementById('phone'),
-        streetAddress = document.getElementById('streetAddress'),
-        postalCode = document.getElementById('postalCode'),
-        city = document.getElementById('city'),
-        otherAddress = document.getElementById('otherAddress');
-    if (firstName.value.length === 0) {
-        firstName.focus();
-        return false;
-    }
-    if (inputAlpha(firstName)) {
-        if (inputAlpha(lastName)) {
-            if (inputEmail(email)) {
-                if (inputNumeric(phone)) {
-                    if (inputAlpha(streetAddress)) {
-                        if (inputNumeric(postalCode)) {
-                            if (inputAlpha(city)) {
-                                if (inputAlpha(otherAddress)) {
-                                    return true;
-
-                                }//inputAlpha otherAddress
-                            }//inputAlpha city   
-                        }//inputNumeric postalCode    
-                    }//inputNumeric streetAddress
-                }//inputNumeric phone
-            }//inputEmail email
-        }//inputAlpha lastName
-    }//inputAlpha firstName
-    return false;
-};//formValidation
-
-
-
 //function inputAlphaNumeric(inputtext) {
 //    var alphaNumExpr = /^[0-9a-zA-Z]+$/;
 //    if (inputtext.value.match(alphaNumExpr)) {
@@ -135,29 +96,158 @@ document.getElementById("target").onsubmit = function formValidation() {
 //}//inputSelection
 
 
+//VALIDATION FUNCTION    
+document.getElementById("target").onsubmit = function formValidation() {
+    'use strict';
+    window.console.log("validation function invoked");
+    var firstName = document.getElementById('firstName'),
+        lastName = document.getElementById('lastName'),
+        email = document.getElementById('email'),
+        phone = document.getElementById('phone'),
+        streetAddress = document.getElementById('streetAddress'),
+        postalCode = document.getElementById('postalCode'),
+        city = document.getElementById('city'),
+        otherAddress = document.getElementById('otherAddress');
+    if (firstName.value.length === 0) {
+        firstName.focus();
+        return false;
+    }
+    if (inputAlpha(firstName)) {
+        if (inputAlpha(lastName)) {
+            if (inputEmail(email)) {
+                if (inputNumeric(phone)) {
+                    if (inputAlpha(streetAddress)) {
+                        if (inputNumeric(postalCode)) {
+                            if (inputAlpha(city)) {
+                                if (inputAlpha(otherAddress)) {
+                                    return true;
+
+                                }//inputAlpha otherAddress
+                            }//inputAlpha city   
+                        }//inputNumeric postalCode    
+                    }//inputNumeric streetAddress
+                }//inputNumeric phone
+            }//inputEmail email
+        }//inputAlpha lastName
+    }//inputAlpha firstName
+    return false;
+};//formValidation
+
+
+
+
+
 //-------------------------------------------->>>>
-//doughForm
+//doughOption
 
-
-//$("#doughOption").submit(function(event) {
-//        var input = $("#target input").serializeArray();
-//            window.console.log(input);
-//        //event.preventDefault(); 
-//            //window.console.log("prevent default");           
-//    });
-
-
-function check() {
+var doughOption = $("input[name=dough]").click(function (event) {
     'use strict';
-    document.getElementById("form").checked = true;
-    window.console.dir("doughOptions-checked");
-}
+    doughOption = $("input[type=radio][name=dough]:checked").val();
+    window.console.log(doughOption);
+});
 
-function uncheck() {
+
+//sizeOption
+var sizeOption = $("#sizeOption").change(function (event) {
     'use strict';
-    document.getElementById("form").checked = false;
-    window.console.dir("doughOptions-Not Checked");
-}
+    sizeOption = $("#sizeOption option:selected").val();
+    window.console.log(sizeOption);
+    window.console.log(doughOption);
+});
+
+
+//price
+var subTotal = sizeOption.change(function (event) {
+    'use strict';
+    var display = $("input[name=display]");
+    if (doughOption === "handToss" && sizeOption === "small") {
+        subTotal = "9.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "handToss" && sizeOption === "medium") {
+        subTotal = "12.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "handToss" && sizeOption === "large") {
+        subTotal = "14.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "thinCrust" && sizeOption === "medium") {
+        subTotal = "11.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "thinCrust" && sizeOption === "large") {
+        subTotal = "13.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "glutenFree" && sizeOption === "small") {
+        subTotal = "10.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "nyStyle" && sizeOption === "large") {
+        subTotal = "16.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "nyStyle" && sizeOption === "exLarge") {
+        subTotal = "19.99";
+        display.val(display.val() + subTotal);
+    }
+    window.console.log(subTotal);
+});
+
+//cheeseOption
+var cheeseOption = $("#cheeseOption").change(function (event) {
+    'use strict';
+    var display = $("input[name=display]"),
+        extra = 2.99,
+        double = 3.99;
+    extra = parseFloat(extra);
+    double = parseFloat(double);
+    subTotal = parseFloat(subTotal);
+    cheeseOption = $("#cheeseOption option:selected").val();
+    if (cheeseOption === "extra") {
+        subTotal = parseFloat(extra + subTotal);
+        display.val(display.val() + subTotal);
+    }
+    if (cheeseOption === "double") {
+        subTotal = parseFloat(double + subTotal);
+        display.val(display.val() + subTotal);
+    }
+});
+
+//sauceOption
+var sauceOption = $("#sauceOption").change(function (event) {
+    'use strict';
+    var display = $("input[name=display]"),
+        hearty = 0.99,
+        bbq = 1.99;
+    hearty = parseFloat(hearty);
+    bbq = parseFloat(bbq);
+    subTotal = parseFloat(subTotal);
+    sauceOption = $("#sauceOption option:selected").val();
+    if (sauceOption === "hearty") {
+        subTotal = parseFloat(hearty + subTotal);
+        display.val(display.val() + subTotal);
+    }
+    if (sauceOption === "bbq") {
+        subTotal = parseFloat(bbq + subTotal);
+        display.val(display.val() + subTotal);
+    }
+});
+
+//toppingOptions
+var toppingOption = $("input[name=topping]").click(function (event) {
+    'use strict';
+    var options = [];
+    toppingOption = $("input[type=radio][name=topping]:checked").each(function (i) {
+        options[i] = $(this).val();
+    });
+    window.console.log(toppingOption);
+});
+
+
+//-----------------------------------------
+//billing card
 
 
 

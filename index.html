@@ -59,16 +59,16 @@
 <!--target - DELIVERY FORM-->
                      <form id="target" name="target" action="javascript:window.console.log('success! deliveryForm');" method="post"> 
                       
-                            <input placeholder="First Name" type="text" class="delivery form-control" id="firstName" name="firstName">
-                            <input placeholder="Last Name" type="text" class="delivery form-control" id="lastName" name="lastName">
-                            <input placeholder="Email Address" type="text" class="delivery form-control" id="email" name="email">
-                            <input placeholder="Phone Number" type="text" class="delivery form-control" id="phone" name="phone">
-                            <input placeholder="Street Address" type="text" class="delivery form-control" id="streetAddress" name="streetAddress">
-                            <input placeholder="Postal Code" type="text" class="delivery form-control" id="postalCode" name="postalCode">
-                           <input placeholder="City" type="text" class="delivery form-control" id="city" name="city">
+                            <input placeholder="First Name" type="text" class="delivery form-control" id="firstName" name="delivery">
+                            <input placeholder="Last Name" type="text" class="delivery form-control" id="lastName" name="delivery">
+                            <input placeholder="Email Address" type="text" class="delivery form-control" id="email" name="delivery">
+                            <input placeholder="Phone Number" type="text" class="delivery form-control" id="phone" name="delivery">
+                            <input placeholder="Street Address" type="text" class="delivery form-control" id="streetAddress" name="delivery">
+                            <input placeholder="Postal Code" type="text" class="delivery form-control" id="postalCode" name="delivery">
+                           <input placeholder="City" type="text" class="delivery form-control" id="city" name="delivery">
                             <!--ADDRESS TYPE-->                          
                             <label for="addressType">Address Type</label>
-                            <select class="form-control" id="addressType" name="addressType">
+                            <select class="form-control" id="addressType" name="other">
                               <option value="">House</option>
                               <option value="">Apartment</option>
                               <option value="">Business</option>
@@ -79,7 +79,7 @@
                             </select>                          
                         <!--HIDDEN DIV-->
                                 <div id="hiddenDiv" class="hide form-group">
-                                    <input placeholder="Other Address Type" class="form-control" type="text" id="otherAddress" name="otherAddress">
+                                    <input placeholder="Other Address Type" class="form-control" type="text" id="otherAddress" name="delivery">
                                 </div>
                   </div><!--END MODAL BODY- DELIVERY INFO-->
                   <div class="modal-footer">
@@ -99,7 +99,7 @@
           <div class="input-group col-md-2">
               <span class="input-group-addon">$</span>
 <!--COST TRACKER - displayAmount-->
-                  <input placeholder="Total Amount" type="text" class="form-control" aria-label="displayAmount" id="displayAmount" name="displayAmount" readonly>
+                  <input placeholder="Total Amount" type="text" class="form-control display" aria-label="displayAmount" id="display" name="display" readonly>
             </div>
            <!--CAROUSEL CONTENT-->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -112,31 +112,31 @@
                         <legend>Dough Options</legend>
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="handToss" id="handToss" value="handToss" >
+                                <input type="radio" class="form-check-input" name="dough" id="dough" value="handToss" >
                                 Hand Tossed
                               </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="thinCrust" id="thinCrust" value="thinCrust">
+                                    <input type="radio" class="form-check-input" name="dough" id="dough" value="thinCrust">
                                     Thin Crust
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="nyStyle" id="nyStyle" value="nyStyle">
+                                    <input type="radio" class="form-check-input" name="dough" id="dough" value="nyStyle">
                                     New York Style
                                 </label>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="glutenFree" id="glutenFree" value="glutenFree">
+                                    <input type="radio" class="form-check-input" name="dough" id="dough" value="glutenFree">
                                     Gluten Free
                                 </label>
                             </div>
                           </fieldset>
                <div class="modal-footer">
-                    <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Size Options <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                    <button class="btn btn-success" type="submit" value="submit" name="submitDough" id="submitDough" onclick="$('#myCarousel').carousel('next')">Continue to Size Options <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                         </a></button>
@@ -145,16 +145,16 @@
             </section>
     <!--STEP TWO-->
             <section class="item">
-                    <form id="sizeOption" name="sizeOption" action="javascript:window.console.log('success! sizeOption');" method="post">
+                    <form id="" name="sizeOption" action="javascript:window.console.log('success! sizeOption');" method="post">
                       <fieldset class="form-group">
                    <legend>Size Options</legend>
                     <label for="sizeOption">Size Option</label>
-                    <select class="form-control" id="cheeseOption">
+                    <select class="form-control" id="sizeOption">
                         <option selected>Choose...</option>
-                        <option>Small</option>
-                        <option>Medium</option>
-                        <option>Large</option>
-                        <option>Ex-Large</option>
+                        <option name="size" value="small">Small</option>
+                        <option name="size" value="medium">Medium</option>
+                        <option name="size" value="large">Large</option>
+                        <option name="size" value="exLarge">Ex-Large</option>
                     </select>
                       </fieldset>
                 <div class="modal-footer">
@@ -162,7 +162,7 @@
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Back to Dough Option</span>
                           </a></button>
-                   <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Cheese Option <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                   <button class="btn btn-success" type="submit" value="submit" name="submitSize" id="submitSize" onclick="$('#myCarousel').carousel('next')">Continue to Cheese Option <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                     </a></button>
@@ -171,17 +171,16 @@
             </section>
     <!--STEP THREE-->
             <section class="item">
-                <form id="cheeseOptions" name="cheeseOptions" action="javascript:window.console.log('success! cheeseOptions');" method="post">
+                <form id="cheeseOption" name="cheeseOptions" action="javascript:window.console.log('success! cheeseOptions');" method="post">
                   <fieldset class="form-group">
                    <legend>Cheese Options</legend>
                     <label for="cheeseOption">Cheese Option</label>
                     <select class="form-control" id="cheeseOption">
                         <option selected>Choose...</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option name="cheese" value="light">Light: No Charge</option>
+                        <option name="cheese" value="normal">Normal: No Charge</option>
+                        <option name="cheese" value="extra">Extra: +$2.99</option>
+                        <option name="cheese" value="double">Double: +$3.99</option>
                     </select>
                   </fieldset>
                 <div class="modal-footer">
@@ -189,7 +188,7 @@
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                           </a></button>
-                <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Sauce Option <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                <button class="btn btn-success" type="submit" value="submit" name="submitCheese" id="submitCheese" onclick="$('#myCarousel').carousel('next')">Continue to Sauce Option <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                     </a></button>
@@ -204,11 +203,9 @@
                     <label for="sauceOption">Sauce Option</label>
                     <select class="form-control" id="sauceOption">
                         <option selected>Choose...</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option name="sauce" value="regular">Regular Tomato: No Charge</option>
+                        <option name="sauce" value="hearty">Hearty Tomato: +$.99</option>
+                        <option name="sauce" value="bbq">BBQ Sauce: +$1.99</option>
                     </select>
                   </fieldset>
                   <div class="modal-footer">
@@ -216,7 +213,7 @@
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                           </a></button>
-                <button class="btn btn-success" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('next')">Continue to Topping Options <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                <button class="btn btn-success" type="submit" value="submit" name="submitSauce" id="submitSauce" onclick="$('#myCarousel').carousel('next')">Continue to Topping Options <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                     </a></button>
@@ -225,51 +222,51 @@
             </section>
     <!--STEP FIVE-->
             <section class="item">
-                <form id="toppingOptions" name="toppingOptions" action="javascript:window.console.log('success! toppingOptions');" method="post">
+                <form id="toppingOption" name="toppingOption" action="javascript:window.console.log('success! toppingOptions');" method="post">
                   <fieldset class="form-check">
                    <legend>Topping Options</legend>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Pepperoni
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Sausage
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Ham
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Bacon
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Salami
                         </label><br>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Peppers
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Olives
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Jalapenos
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Mushrooms
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Pineapple
                         </label>
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
+                            <input class="form-check-input" type="checkbox" value="topping" name="topping">
                         Onion
                         </label>
                 </fieldset>
@@ -278,13 +275,13 @@
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                           </a></button>
-                <button class="btn btn-success" type="button" onclick="$('#myCarousel').carousel('next')">Return to Beginning <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
+                <button class="btn btn-default" type="button" onclick="$('#myCarousel').carousel('next')">Return to Beginning <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next" >
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                     </a></button>
-                <button class="btn btn-default" type="submit" value="submit" name="submit">Save Order<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                <button class="btn btn-success" type="submit" value="submit" name="submitToppings" id="submitToppings">Save Order<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">Save Order</span>
                           </a></button>
                     </div>
                 </form>
@@ -336,6 +333,10 @@
                                 <input placeholder="Postal Code" type="number" class="form-control" id="postalCode">
                                 <input placeholder="City" type="text" class="form-control" id="city">
                             </fieldset>
+            <section>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
+                <button type="submit" value="submit"  class="btn btn-success" name="submitBilling" id="submitBilling">Submit</button>
+            </section>
                         </form>
                 </div>
     
@@ -352,13 +353,14 @@
                         <input placeholder="Credit Card Number" type="" class="form-control" id="">
                         <input placeholder="Expires MM/YYYY" type="" class="form-control" id="">
                         <input placeholder="CVV" type="" class="form-control" id="">
-                      </fieldset>    
+                      </fieldset> 
+            <section>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
+                <button type="submit" value="submit" class="btn btn-success" name="submitCard" id="submitCard">Submit</button>
+            </section>   
                     </form>
           </div>
-              <section>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
-                <button type="button" class="btn btn-primary">Submit</button>
-            </section>
+    
             
             
         </div><!--END ACCORDION-->
