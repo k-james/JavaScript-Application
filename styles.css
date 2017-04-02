@@ -7,10 +7,10 @@
     margin: 1em;
 }
 
-input:false {
+input[value=false]:focus {
     box-shadow: 0 0 5px 1px red;
 }
 
-input:focus:false{
-    outline: none;
+input[type=text]:focus {
+    border:110%;
 }

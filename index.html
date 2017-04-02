@@ -85,7 +85,7 @@
                   <div class="modal-footer">
      <!--SUBMIT - DELIVERY INFO-->
                     <button type="reset" data-dismiss="modal" value="reset" class="btn btn-secondary" id="reset">Close</button>
-                    <button type="submit" value="submit" name="submit" class="btn btn-primary" id="trigger">Save changes</button>
+                    <button type="submit" value="submit" name="submit" class="btn btn-primary" id="trigger">Submit</button>
                       </form><!--END FORM-->
                       
                   </div>
@@ -99,7 +99,7 @@
           <div class="input-group col-md-2">
               <span class="input-group-addon">$</span>
 <!--COST TRACKER - displayAmount-->
-                  <input placeholder="Total Amount" type="text" class="form-control display" aria-label="displayAmount" id="display" name="display" readonly>
+                  <input placeholder="Total Amount" type="text" class="form-control" aria-label="displayAmount" id="display" name="display" readonly>
             </div>
            <!--CAROUSEL CONTENT-->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -150,7 +150,7 @@
                    <legend>Size Options</legend>
                     <label for="sizeOption">Size Option</label>
                     <select class="form-control" id="sizeOption">
-                        <option selected>Choose...</option>
+                        <option selected disabled>Size...</option>
                         <option name="size" value="small">Small</option>
                         <option name="size" value="medium">Medium</option>
                         <option name="size" value="large">Large</option>
@@ -171,12 +171,12 @@
             </section>
     <!--STEP THREE-->
             <section class="item">
-                <form id="cheeseOption" name="cheeseOptions" action="javascript:window.console.log('success! cheeseOptions');" method="post">
+                <form id="cheeseOptions" name="cheeseOptions" action="javascript:window.console.log('success! cheeseOptions');" method="post">
                   <fieldset class="form-group">
                    <legend>Cheese Options</legend>
                     <label for="cheeseOption">Cheese Option</label>
                     <select class="form-control" id="cheeseOption">
-                        <option selected>Choose...</option>
+                        <option selected disabled>Cheese...</option>
                         <option name="cheese" value="light">Light: No Charge</option>
                         <option name="cheese" value="normal">Normal: No Charge</option>
                         <option name="cheese" value="extra">Extra: +$2.99</option>
@@ -202,7 +202,7 @@
                    <legend>Sauce Options</legend>
                     <label for="sauceOption">Sauce Option</label>
                     <select class="form-control" id="sauceOption">
-                        <option selected>Choose...</option>
+                        <option selected disabled>sauce...</option>
                         <option name="sauce" value="regular">Regular Tomato: No Charge</option>
                         <option name="sauce" value="hearty">Hearty Tomato: +$.99</option>
                         <option name="sauce" value="bbq">BBQ Sauce: +$1.99</option>
@@ -271,7 +271,7 @@
                         </label>
                 </fieldset>
                 <div class="modal-footer">
-                <button class="btn btn-default" type="submit" value="submit" name="submit" onclick="$('#myCarousel').carousel('prev')">Back to Sauce Options<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
+                <button class="btn btn-default" type="button" value="button" name="button" onclick="$('#myCarousel').carousel('prev')">Back to Sauce Options<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev" >
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                           </a></button>
@@ -313,28 +313,30 @@
               <div class="card"><!--EXPAND ONE-->
                 <div class="card-header" role="tab" id="headingOne">
                   <h5 class="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#billingInfoForm" aria-expanded="true" aria-controls="billingInfoForm">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#billingInfo" aria-expanded="true" aria-controls="billingInfo">
                       Billing Information
                     </a>
                   </h5>
                 </div>
-                        <form id="billingInfoForm" class="collapse" role="tabpanel" aria-labelledby="headingOne"> <!--FORM BILLING INFO-->
+                        <form id="billingInfo" action="javascript:window.console.log('success! BillingInfo');" method="post" class="collapse" role="tabpanel" aria-labelledby="headingOne"> <!--FORM BILLING INFO-->
                           <fieldset class="form-group">
                              <label class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input">
+            <!--INFO SAME CHECK-->                 
+                              <input type="checkbox" class="custom-control-input" id="billingInfo">
                               <span class="custom-control-indicator"></span>
                               <span class="custom-control-description">Delivery Address Same as Billing</span>
                             </label>
                          </fieldset>
                             <fieldset class="form-group">
-                                <input placeholder="First Name"type="text" class="form-control" id="firstName">
-                                <input placeholder="Last Name" type="text" class="form-control" id="lastName">
-                                <input placeholder="Street Address"type="text" class="form-control" id="streetAddress">
-                                <input placeholder="Postal Code" type="number" class="form-control" id="postalCode">
-                                <input placeholder="City" type="text" class="form-control" id="city">
+                                <input placeholder="First Name"type="text" class="form-control" id="firstName2" name="billing">
+                                <input placeholder="Last Name" type="text" class="form-control" id="lastName2" name="billing">
+                                <input placeholder="Email Address" type="text" class="delivery form-control" id="email2" name="billing">
+                                <input placeholder="Street Address"type="text" class="form-control" id="streetAddress2" name="billing">
+                                <input placeholder="Postal Code" type="number" class="form-control" id="postalCode2" name="billing">
+                                <input placeholder="City" type="text" class="form-control" id="city2" name="billing">
                             </fieldset>
             <section>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
                 <button type="submit" value="submit"  class="btn btn-success" name="submitBilling" id="submitBilling">Submit</button>
             </section>
                         </form>
@@ -343,19 +345,48 @@
           <div class="card"><!--EXPAND TWO-->
             <div class="card-header" role="tab" id="headingTwo">
               <h5 class="mb-0">
-                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#cardInfoForm" aria-expanded="false" aria-controls="cardInfoForm">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#cardInfo" aria-expanded="false" aria-controls="cardInfo">
                   Card Info
                 </a>
               </h5>
             </div>
-                    <form id="cardInfoForm" class="collapse" role="tabpanel" aria-labelledby="headingTwo"><!--FORM CARD INFO-->
-                     <fieldset class="form-group">
-                        <input placeholder="Credit Card Number" type="" class="form-control" id="">
-                        <input placeholder="Expires MM/YYYY" type="" class="form-control" id="">
-                        <input placeholder="CVV" type="" class="form-control" id="">
-                      </fieldset> 
+                    <form id="cardInfo" action="javascript:window.console.log('success! carInfo');" method="post" class="collapse"  role="tabpanel" aria-labelledby="headingTwo"><!--FORM CARD INFO-->
+                     <fieldset id="expiration" name="expiration" class="form-group">
+                        <input placeholder="Credit Card Number" type="text" class="form-control" id="cardNumber" name="expiration">
+                        <input placeholder="CVV" type="text" class="form-control" id="cvv" name="expiration">
+                    <select class="form-control" id="monthValid" name="expiraton">
+                        <option selected disabled>MM</option>
+                        <option name="month" value="1">01</option>
+                        <option name="month" value="2">02</option>
+                        <option name="month" value="3">03</option>
+                        <option name="month" value="4">04</option>
+                        <option name="month" value="5">05</option>
+                        <option name="month" value="6">06</option>
+                        <option name="month" value="7">07</option>
+                        <option name="month" value="8">08</option>
+                        <option name="month" value="9">09</option>
+                        <option name="month" value="10">10</option>
+                        <option name="month" value="11">11</option>
+                        <option name="month" value="12">12</option>
+                    </select>
+                    <select class="form-control" id="yearValid" name="expiration">
+                        <option selected disabled>YY</option>
+                        <option name="year" value="14">14</option>
+                        <option name="year" value="15">15</option>
+                        <option name="year" value="16">16</option>
+                        <option name="year" value="17">17</option>
+                        <option name="year" value="18">18</option>
+                        <option name="year" value="19">19</option>
+                        <option name="year" value="20">20</option>
+                        <option name="year" value="21">21</option>
+                        <option name="year" value="22">22</option>
+                        <option name="year" value="23">23</option>
+                        <option name="year" value="24">24</option>
+                    </select>
+                        </fieldset>
+                     
             <section>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
+                <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button> <!--SUBMIT-->
                 <button type="submit" value="submit" class="btn btn-success" name="submitCard" id="submitCard">Submit</button>
             </section>   
                     </form>
@@ -370,7 +401,7 @@
     </div><!--END MODAL-->
 
       <footer class="footer">
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>Project Pie&copy; 2017 Company, Inc.</p>
       </footer>
 
     </div> <!-- /container -->

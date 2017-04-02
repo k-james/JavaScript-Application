@@ -2,6 +2,7 @@
 /*global $, jQuery*/
 
 //init
+
 document.getElementById("#target");
 
 $("#target").submit(function (event) {
@@ -46,6 +47,7 @@ function inputEmail(inputtext) {
         window.console.log("inputEmail-true");
         return true;
     } else {
+        inputtext.focus();
         window.console.log("inputEmail-false");
         return false;
     }
@@ -249,7 +251,17 @@ var toppingOption = $("input[name=topping]").click(function (event) {
 //-----------------------------------------
 //billing card
 
-
+$("#billingInfo").click(function () {
+    'use strict';
+    if ($("#billingInfo").attr("checked")) {
+        $("#firstName").attr($("#firstName2").val());
+        $("#lastName").attr($("#lastName2").val());
+        $("#email").attr($("#email2").val());
+        $("#streetAddress").attr($("#streetAddress2").val());
+        $("#postalCode").attr($("#postalCode2").val());
+        $("#city").attr($("#city2").val());
+    }
+});
 
 
 
