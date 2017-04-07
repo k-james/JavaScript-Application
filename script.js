@@ -1,16 +1,37 @@
 /*jslint browser: true*/
 /*global $, jQuery*/
 
-//init
+ //Modal Trigger
+$('#checkOutModal').on('show.bs.modal', function (event) {
+    'use strict';
+    var button = $(event.relatedTarget); // Button that triggered the modal
+});
+  
+//CAROUSEL- Interval Disable 
+$('.carousel').carousel({
+    interval: false
+});
 
-document.getElementById("#target");
+
+//Hidden Div
+$("#addressType").change(function () {
+    'use strict';
+    var value = this.value;
+    if (value === "1") {
+        $(".hide").removeClass();
+    }
+});
+
+//DELIVERY (target) Validation
 
 $("#target").submit(function (event) {
     'use strict';
     var input = $("#target input").serializeArray();
-    window.console.log(input);
-        //event.preventDefault(); 
-            //window.console.log("prevent default");           
+  // window.console.log(input);
+    function escapeRegExp(string) {
+        return string.replace(/[.*+?\^${}()|\[\]\\]/g, '\\$&'); // $& means the whole matched string
+    }
+              
 });
 
 function inputAlpha(inputtext) {
@@ -26,19 +47,6 @@ function inputAlpha(inputtext) {
     }
 }//inputAlpha
 
-function inputNumeric(inputtext) {
-    'use strict';
-    var numExpr = /^[0-9]+$/;
-    if (inputtext.value.match(numExpr)) {
-        window.console.log("inputNumeric-true");
-        return true;
-    } else {
-        inputtext.focus();
-        window.console.log("inputNumeric-false");
-        return false;
-         
-    }
-}//inputNumeric
 
 function inputEmail(inputtext) {
     'use strict';
@@ -48,54 +56,53 @@ function inputEmail(inputtext) {
         return true;
     } else {
         inputtext.focus();
+        $("#deliveryModalLabel").text("Email Not Valid!").show();
         window.console.log("inputEmail-false");
         return false;
     }
 }//inputEmail
 
-//function inputAlphaNumeric(inputtext) {
-//    var alphaNumExpr = /^[0-9a-zA-Z]+$/;
-//    if (inputtext.value.match(alphaNumExpr)) {
-//        window.console.log("inputAlphaNumeric-true");
-//        return true;
-//    } else {
-//        window.console.log("alphaNumExpr-false");
-//        return false;
-//    }
-//}//inputAlphaNumeric
+function inputPhone(inputtext) {
+    'use strict';
+    var phoneExpr = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+    if (inputtext.value.match(phoneExpr)) {
+        window.console.log("inputPhone-true");
+        return true;
+    } else {
+        inputtext.focus();
+        $("#deliveryModalLabel").text("Phone Not Valid!").show();
+        window.console.log("inputPhone-false");
+        return false;
+    }
+}//inputPhone
 
-//function inputAddress(inputtext) {
-//    var addressExpr = /^[A-Za-z0-9.-]+[ ]?)+(?:Avenue|Lane|Road|Boulevard|Drive|Street|Ave|Dr|Rd|Blvd|Ln|St)\.?/;
-//    if(inputtext.value.match(addressExpr)) {
-//        window.console.log("inputAddress-true");
-//        return true;
-//    } else {
-//        window.console.log("inputAddress-false");
-//        return false;
-//    }
-//}//inputAddress
+function inputPostalCode(inputtext) {
+    'use strict';
+    var postalCodeExpr = /(^\d{5}(?:[\s]?[\-\s][\s]?\d{4})?$)/;
+    if (inputtext.value.match(postalCodeExpr)) {
+        window.console.log("inputPostalCode-true");
+        return true;
+    } else {
+        inputtext.focus();
+        $("#deliveryModalLabel").text("Postal Code Not Valid!").show();
+        window.console.log("inputPostalCode-false");
+        return false;
+    }
+}//inputPostalCode
 
-//function inputLength(inputtext) {
-//    var lengthExpr = inputtext.value;
-//    if (lengthExpr.length >= lengthExpr.length <= max) {
-//        window.console.log("inputLength-true");
-//        return true;
-//    } else {
-//        window.console.log("inputLength-false");
-//        return false;
-//    }
-//}//inputLength
-//    
-//function inputSelection(inputtext) {
-//    if (inputtext.value === "other") {
-//        window.console.log("inputSelection-true");
-//        return true;
-//    } else {
-//        window.console.log("inputSelection-false");
-//        return false;
-//    }
-//  //if(this.checked==!true){document.target.otherAddress.disable = true;}  
-//}//inputSelection
+function inputStreetAddress(inputtext) {
+    'use strict';
+    var streetAddressExpr = /[A-Za-z0-9'\.\-\s\,]/;
+    if (inputtext.value.match(streetAddressExpr)) {
+        window.console.log("inputStreetAddress-true");
+        return true;
+    } else {
+        inputtext.focus();
+        $("#deliveryModalLabel").text("Street Address Not Valid!").show();
+        window.console.log("inputStreetAddress-false");
+        return false;
+    }
+}//inputStreetAddress
 
 
 //VALIDATION FUNCTION    
@@ -112,16 +119,18 @@ document.getElementById("target").onsubmit = function formValidation() {
         otherAddress = document.getElementById('otherAddress');
     if (firstName.value.length === 0) {
         firstName.focus();
+        $("#deliveryModalLabel").text("Name Not Valid!").show();
         return false;
     }
     if (inputAlpha(firstName)) {
         if (inputAlpha(lastName)) {
             if (inputEmail(email)) {
-                if (inputNumeric(phone)) {
-                    if (inputAlpha(streetAddress)) {
-                        if (inputNumeric(postalCode)) {
+                if (inputPhone(phone)) {
+                    if (inputStreetAddress(streetAddress)) {
+                        if (inputPostalCode(postalCode)) {
                             if (inputAlpha(city)) {
                                 if (inputAlpha(otherAddress)) {
+                                    $("#deliveryModal").modal("toggle");
                                     return true;
 
                                 }//inputAlpha otherAddress
@@ -140,11 +149,15 @@ document.getElementById("target").onsubmit = function formValidation() {
 
 
 //-------------------------------------------->>>>
+
+
+
+
 //doughOption
 
 var doughOption = $("input[name=dough]").click(function (event) {
     'use strict';
-    doughOption = $("input[type=radio][name=dough]:checked").val();
+    doughOption = $("input[name=dough]:checked").val();
     window.console.log(doughOption);
 });
 
@@ -157,12 +170,27 @@ var sizeOption = $("#sizeOption").change(function (event) {
     window.console.log(doughOption);
 });
 
+$("#sizeOption").bind("submit", function (event) {
+    'use strict';
+    event.preventDefault();
+});
 
 //price
+
 var subTotal = sizeOption.change(function (event) {
     'use strict';
     var display = $("input[name=display]");
+    subTotal = parseFloat(subTotal);
+ 
     if (doughOption === "handToss" && sizeOption === "small") {
+        subTotal = "9.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "thinCrust" && sizeOption === "small") {
+        subTotal = "9.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "nyStyle" && sizeOption === "small") {
         subTotal = "9.99";
         display.val(display.val() + subTotal);
     }
@@ -178,6 +206,14 @@ var subTotal = sizeOption.change(function (event) {
         subTotal = "11.99";
         display.val(display.val() + subTotal);
     }
+    if (doughOption === "glutenFree" && sizeOption === "medium") {
+        subTotal = "11.99";
+        display.val(display.val() + subTotal);
+    }
+    if (doughOption === "nyStyle" && sizeOption === "medium") {
+        subTotal = "11.99";
+        display.val(display.val() + subTotal);
+    }
     if (doughOption === "thinCrust" && sizeOption === "large") {
         subTotal = "13.99";
         display.val(display.val() + subTotal);
@@ -190,10 +226,17 @@ var subTotal = sizeOption.change(function (event) {
         subTotal = "16.99";
         display.val(display.val() + subTotal);
     }
-    if (doughOption === "nyStyle" && sizeOption === "exLarge") {
-        subTotal = "19.99";
+    if (doughOption === "glutenFree" && sizeOption === "large") {
+        subTotal = "16.99";
         display.val(display.val() + subTotal);
     }
+    if (doughOption === "nyStyle" && sizeOption === "exLarge") {
+        subTotal = "19.99";
+        display.val(parseFloat(display.val() + subTotal));
+    } else {
+        return false;
+    }
+    
     window.console.log(subTotal);
 });
 
@@ -202,18 +245,33 @@ var cheeseOption = $("#cheeseOption").change(function (event) {
     'use strict';
     var display = $("input[name=display]"),
         extra = 2.99,
+        light = 0.00,
+        normal = 0.00,
         double = 3.99;
+    light = parseFloat(light);
+    normal = parseFloat(normal);
     extra = parseFloat(extra);
     double = parseFloat(double);
     subTotal = parseFloat(subTotal);
     cheeseOption = $("#cheeseOption option:selected").val();
+    if (cheeseOption === "light") {
+        subTotal = parseFloat(extra + subTotal);
+        display.val(subTotal);
+    }
+    if (cheeseOption === "normal") {
+        subTotal = parseFloat(extra + subTotal);
+        display.val(subTotal);
+    }
     if (cheeseOption === "extra") {
         subTotal = parseFloat(extra + subTotal);
-        display.val(display.val() + subTotal);
+        display.val(subTotal);
     }
     if (cheeseOption === "double") {
         subTotal = parseFloat(double + subTotal);
-        display.val(display.val() + subTotal);
+        display.val(subTotal);
+    } else {
+        subTotal = parseFloat(normal + subTotal);
+        display.val(subTotal);
     }
 });
 
@@ -222,47 +280,80 @@ var sauceOption = $("#sauceOption").change(function (event) {
     'use strict';
     var display = $("input[name=display]"),
         hearty = 0.99,
+        regular = 0.00,
         bbq = 1.99;
+    regular = parseFloat(regular);
     hearty = parseFloat(hearty);
     bbq = parseFloat(bbq);
     subTotal = parseFloat(subTotal);
     sauceOption = $("#sauceOption option:selected").val();
     if (sauceOption === "hearty") {
         subTotal = parseFloat(hearty + subTotal);
-        display.val(display.val() + subTotal);
+        display.val(subTotal);
     }
     if (sauceOption === "bbq") {
         subTotal = parseFloat(bbq + subTotal);
-        display.val(display.val() + subTotal);
+        display.val(subTotal);
+    }
+    if (sauceOption === "regular") {
+        subTotal = parseFloat(regular + subTotal);
+        display.val(subTotal);
+    } else {
+        subTotal = parseFloat(regular + subTotal);
+        display.val(subTotal);
     }
 });
 
 //toppingOptions
-var toppingOption = $("input[name=topping]").click(function (event) {
+var display = $("input[name=display]");
+var option;
+var topping;
+var toppingcost = 0;
+$("input[name=topping]").click(function (event) {
     'use strict';
-    var options = [];
-    toppingOption = $("input[type=radio][name=topping]:checked").each(function (i) {
-        options[i] = $(this).val();
-    });
-    window.console.log(toppingOption);
+    option = event.target.getAttribute("value");
+    option = option.split("|");
+    toppingcost += parseFloat(option[0]);
+    topping = option[1];
+    subTotal = parseFloat(toppingcost + subTotal);
+    display.val(subTotal);
+        
+    window.console.log(toppingcost);
+    window.console.log(topping);
 });
 
 
 //-----------------------------------------
-//billing card
 
-$("#billingInfo").click(function () {
+//billing Info Same
+
+$("#sameInfo").on("change", function () {
     'use strict';
-    if ($("#billingInfo").attr("checked")) {
-        $("#firstName").attr($("#firstName2").val());
-        $("#lastName").attr($("#lastName2").val());
-        $("#email").attr($("#email2").val());
-        $("#streetAddress").attr($("#streetAddress2").val());
-        $("#postalCode").attr($("#postalCode2").val());
-        $("#city").attr($("#city2").val());
+    if (this.checked) {
+        $("[name='firstName2']").val($("[name='firstName']").val());
+        $("[name='lastName2']").val($("[name='lastName']").val());
+        $("[name='email2']").val($("[name='email']").val());
+        $("[name='streetAddress2']").val($("[name='streetAddress']").val());
+        $("[name='postalCode2']").val($("[name='postalCode']").val());
+        $("[name='city2']").val($("[name='city']").val());
     }
 });
 
+//Card Info Validation
+
+
+//document.getElementById('cardInfo').onsubmit = function cardValidation() {
+//    'use strict';
+//    var cardNumber = $("#cardNumber").value,
+//        monthValid = $('#monthValid option:selected').value,
+//        yearValid = $('#yearValid option:selected').value;
+//    cardNumber = parseInt(cardNumber, 10);
+//    window.console.log(cardNumber);
+//    if (cardNumber.value.length === 0) {
+//        cardNumber.focus();
+//        return false;
+//    }
+//};
 
 
 

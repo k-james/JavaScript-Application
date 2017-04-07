@@ -3,7 +3,7 @@
     display: none;
 }
 .item{
-    min-height: 200px;
+    min-height: 250px;
     margin: 1em;
 }
 
@@ -11,6 +11,4 @@ input[value=false]:focus {
     box-shadow: 0 0 5px 1px red;
 }
 
-input[type=text]:focus {
-    border:110%;
-}
+
